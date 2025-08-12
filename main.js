@@ -20,6 +20,7 @@ todoForm.onsubmit = (e) => {
   });
   if (existTask) {
     alert(`Ghi chú ${existTask.name} đã tồn tại!`);
+    taskName.value = "";
     return;
   }
   tasks.unshift(newTask);
