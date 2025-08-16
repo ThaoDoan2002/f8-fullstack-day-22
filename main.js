@@ -35,20 +35,48 @@ function renderTasks() {
     return;
   }
 
-  const html = tasks
-    .map((task) => {
-      return `<li class="task-item">
-                    <span class="task-title">${task.name}</span>
-                    <div class="task-action">
-                        <button class="task-btn edit">Edit</button>
-                        <button class="task-btn done">Mark as done</button>
-                        <button class="task-btn delete">Delete</button>
-                    </div>
-                </li>`;
-    })
-    .join("");
+  tasksList.innerHTML = "";
+  tasks.forEach((task) => {
+    const li = document.createElement("li");
+    li.className = "task-item";
+    const span = document.createElement("span");
+    span.className = "task-title";
+    span.textContent = task.name;
+    li.appendChild(span);
+    const div = document.createElement("div");
+    div.className = "task-action";
 
-  tasksList.innerHTML = html;
+    const btn1 = document.createElement("button");
+    btn1.className = "task-btn edit";
+    btn1.textContent = "Edit";
+    const btn2 = document.createElement("button");
+    btn2.className = "task-btn done";
+    btn2.textContent = "Mark as done";
+    const btn3 = document.createElement("button");
+    btn3.className = "task-btn delete";
+    btn3.textContent = "Delete";
+    div.appendChild(btn1);
+    div.appendChild(btn2);
+    div.appendChild(btn3);
+    li.appendChild(div);
+
+    tasksList.append(li);
+  });
+
+  // const html = tasks
+  //   .map((task) => {
+  //     return `<li class="task-item">
+  //                   <span class="task-title">${task.name}</span>
+  //                   <div class="task-action">
+  //                       <button class="task-btn edit">Edit</button>
+  //                       <button class="task-btn done">Mark as done</button>
+  //                       <button class="task-btn delete">Delete</button>
+  //                   </div>
+  //               </li>`;
+  //   })
+  //   .join("");
+
+  // tasksList.innerHTML = html;
 }
 
 renderTasks();
