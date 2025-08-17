@@ -15,8 +15,10 @@ todoForm.onsubmit = (e) => {
     alert("Vui lòng nhập ghi chú!");
     return;
   }
+
+
   const existTask = tasks.find((task) => {
-    return task.name === newTask.name;
+    return task.name.toLowerCase() === newTask.name.toLowerCase();
   });
   if (existTask) {
     alert(`Ghi chú ${existTask.name} đã tồn tại!`);
@@ -27,7 +29,9 @@ todoForm.onsubmit = (e) => {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   renderTasks();
   taskName.value = "";
+  taskName.focus();
 };
+
 
 function renderTasks() {
   if (!tasks.length) {
